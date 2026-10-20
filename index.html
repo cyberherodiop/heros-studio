@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Cinéma - Production Vidéo B2B High-Ticket</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: {
+                            DEFAULT: '#090a0c',
+                            card: '#12141a',
+                            border: '#232733',
+                            hover: '#1a1d26'
+                        },
+                        netflix: {
+                            DEFAULT: '#e50914',
+                            hover: '#f40612',
+                            glow: 'rgba(229, 9, 20, 0.3)'
+                        },
+                        gold: {
+                            DEFAULT: '#d4af37',
+                            glow: 'rgba(212, 175, 55, 0.25)'
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Force Always Dark Cinema Aesthetic */
+        body {
+            background-color: #090a0c;
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .title-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Glassmorphism Dark Effects */
+        .glass-card {
+            background: rgba(18, 20, 26, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-nav {
+            background: rgba(9, 10, 12, 0.9);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* Glowing Effects */
+        .glow-red {
+            box-shadow: 0 0 25px rgba(229, 9, 20, 0.25);
+        }
+        
+        .glow-red:hover {
+            box-shadow: 0 0 35px rgba(229, 9, 20, 0.45);
+        }
+
+        .glow-gold {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232733;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e50914;
+        }
+
+        /* Range Slider Custom Styling */
+        input[type=range] {
+            accent-color: #e50914;
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-gray-200 antialiased selection:bg-netflix selection:text-white">
+
+    <!-- 1. Navigation Fixe Épurée -->
+    <header class="fixed top-0 left-0 w-full z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-lg bg-netflix flex items-center justify-center text-white font-black text-xl shadow-lg group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-film"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="title-cinzel text-xl font-bold tracking-widest text-white group-hover:text-netflix transition-colors">STUDIO CINÉMA</span>
+                    <span class="text-[10px] tracking-widest text-gold uppercase -mt-1 font-semibold">Production B2B</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#about" class="hover:text-netflix transition-colors">Le Réalisateur</a>
+                <a href="#portfolio" class="hover:text-netflix transition-colors">Réalisations</a>
+                <a href="#roi" class="hover:text-netflix transition-colors">Simulateur ROI</a>
+                <a href="#offres" class="hover:text-netflix transition-colors">Offres</a>
+                <a href="#gear" class="hover:text-netflix transition-colors">Matériel</a>
+            </nav>
+
+            <!-- Action Button (sans commutateur de mode) -->
+            <div class="flex items-center space-x-4">
+                <button onclick="openAuditModal()" class="px-5 py-2.5 rounded-full bg-netflix hover:bg-netflix-hover text-white text-sm font-semibold transition-all duration-300 glow-red flex items-center space-x-2">
+                    <i class="fa-solid fa-calendar-check text-xs"></i>
+                    <span>Réserver un Audit</span>
+                </button>
+
+                <!-- Mobile menu toggle button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-300 hover:text-white text-2xl p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars" id="mobileMenuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-obsidian-card border-b border-obsidian-border px-6 py-6 space-y-4">
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-netflix font-medium">Le Réalisateur</a>
+            <a href="#portfolio" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-netflix font-medium">Réalisations</a>
+            <a href="#roi" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-netflix font-medium">Simulateur ROI</a>
+            <a href="#offres" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-netflix font-medium">Offres Tarifaires</a>
+            <a href="#gear" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-netflix font-medium">Matériel Cinéma</a>
+        </div>
+    </header>
+
+    <!-- 2. Section Hero Impact -->
+    <section class="relative min-h-screen pt-28 pb-20 flex items-center justify-center overflow-hidden">
+        <!-- Ambient Cinema Background Effect -->
+        <div class="absolute inset-0 bg-gradient-to-b from-netflix/10 via-obsidian to-obsidian pointer-events-none"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-netflix/20 rounded-full blur-[128px] pointer-events-none"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gold/10 rounded-full blur-[128px] pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <!-- Badge Top -->
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-obsidian-card border border-netflix/40 text-gold text-xs font-semibold uppercase tracking-widest mb-8 shadow-inner">
+                <span class="w-2 h-2 rounded-full bg-netflix animate-ping"></span>
+                <span>Production Cinéma B2B & Storytelling High-Ticket</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="title-cinzel text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-8">
+                Transformez Vos Prospects en Clients Grâce au <span class="text-transparent bg-clip-text bg-gradient-to-r from-netflix via-red-500 to-gold">Cinéma B2B</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="max-w-3xl mx-auto text-lg sm:text-xl text-gray-300 font-normal leading-relaxed mb-10">
+                Nous concevons des vidéos captivantes au rendu cinématographique (S-Cinetone) et à forte valeur ajoutée, spécialement taillées pour doubler vos taux de conversion High-Ticket.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16">
+                <button onclick="openAuditModal()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-netflix hover:bg-netflix-hover text-white font-bold text-base transition-all duration-300 glow-red flex items-center justify-center space-x-3 group">
+                    <span>Démarrer un Projet Vidéo</span>
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </button>
+                <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-full bg-obsidian-card hover:bg-obsidian-hover border border-obsidian-border text-white font-semibold text-base transition-all duration-300 flex items-center justify-center space-x-3">
+                    <i class="fa-solid fa-play text-netflix text-sm"></i>
+                    <span>Voir notre Showreel</span>
+                </a>
+            </div>
+
+            <!-- Social Metrics Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-obsidian-border/60 max-w-4xl mx-auto">
+                <div class="p-4 rounded-2xl bg-obsidian-card/50 border border-obsidian-border">
+                    <p class="title-cinzel text-3xl font-bold text-gold">+15M€</p>
+                    <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">CA Généré pour nos Clients</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-obsidian-card/50 border border-obsidian-border">
+                    <p class="title-cinzel text-3xl font-bold text-white">120+</p>
+                    <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Productions B2B Livrées</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-obsidian-card/50 border border-obsidian-border">
+                    <p class="title-cinzel text-3xl font-bold text-netflix">4.9/5</p>
+                    <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Satisfaction Client</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-obsidian-card/50 border border-obsidian-border">
+                    <p class="title-cinzel text-3xl font-bold text-white">4K 10-bit</p>
+                    <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Qualité Broadcast Sony</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Section "Le Réalisateur" -->
+    <section id="about" class="py-24 bg-gradient-to-b from-obsidian via-obsidian-card/30 to-obsidian relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Frame Photo du Réalisateur -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none rounded-2xl overflow-hidden border-2 border-netflix/30 glow-red group">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" 
+                             alt="Portrait du Réalisateur" 
+                             class="w-full h-[480px] object-cover object-center filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-90"></div>
+                        
+                        <!-- Badge Overlay -->
+                        <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl glass-card border border-gold/30">
+                            <span class="inline-block px-3 py-1 rounded-full bg-netflix text-white text-[10px] font-bold uppercase tracking-widest mb-1">
+                                Réalisateur & Director
+                            </span>
+                            <h3 class="title-cinzel text-xl font-bold text-white">Alexandre Vance</h3>
+                            <p class="text-xs text-gold font-medium">Expert Cadrage & Stratégie Conversion Vidéo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Textes Éditoriaux & Vision -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 text-netflix text-sm font-semibold tracking-wider uppercase">
+                        <i class="fa-solid fa-clapperboard"></i>
+                        <span>L'Excellence Technique au Service de la Conversion</span>
+                    </div>
+
+                    <h2 class="title-cinzel text-3xl sm:text-4xl font-bold text-white leading-tight">
+                        « La vidéo B2B ne doit pas seulement être belle, elle doit vendre. »
+                    </h2>
+
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        Fort de plus de 8 années d’expérience dans la réalisation cinématographique et la direction artistique, j'accompagne les entreprises B2B et les leaders d'opinion pour faire passer leur image de marque au niveau supérieur.
+                    </p>
+
+                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                        En combinant une direction de photographie type cinéma (tournage en S-Cinetone 10-bit, optiques à grande ouverture f/1.4, éclairage de studio sculpté) avec les leviers psychologiques du copywriting High-Ticket, chaque séquence vidéo est optimisée pour capter l'attention et générer de la confiance.
+                    </p>
+
+                    <!-- Points Forts -->
+                    <div class="grid sm:grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-xl bg-obsidian-card border border-obsidian-border flex items-start space-x-3">
+                            <i class="fa-solid fa-camera-retro text-gold text-lg mt-1"></i>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm">Rendu S-Cinetone Natif</h4>
+                                <p class="text-xs text-gray-400 mt-0.5">Teintes de peau naturelles et look cinéma immédiat.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-obsidian-card border border-obsidian-border flex items-start space-x-3">
+                            <i class="fa-solid fa-chart-line text-netflix text-lg mt-1"></i>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm">Structure VSL Orientée ROI</h4>
+                                <p class="text-xs text-gray-400 mt-0.5">Script structuré pour maximiser la conversion.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Galerie de Réalisations Vidéo Filtrables -->
+    <section id="portfolio" class="py-24 bg-obsidian relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-netflix text-sm font-semibold tracking-widest uppercase">Galerie Réalisations</span>
+                <h2 class="title-cinzel text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">Portfolios & Case Studies</h2>
+                <p class="text-gray-400 text-base">Découvrez nos productions classées par objectifs stratégiques.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12">
+                <button onclick="filterPortfolio('all')" class="portfolio-filter-btn active px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-netflix text-white transition-all">Tous</button>
+                <button onclick="filterPortfolio('case-study')" class="portfolio-filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-obsidian-card text-gray-400 hover:text-white border border-obsidian-border transition-all">Case Studies B2B</button>
+                <button onclick="filterPortfolio('vsl')" class="portfolio-filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-obsidian-card text-gray-400 hover:text-white border border-obsidian-border transition-all">VSL High-Ticket</button>
+                <button onclick="filterPortfolio('shorts')" class="portfolio-filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-obsidian-card text-gray-400 hover:text-white border border-obsidian-border transition-all">Shorts / Reels</button>
+                <button onclick="filterPortfolio('cinema')" class="portfolio-filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-obsidian-card text-gray-400 hover:text-white border border-obsidian-border transition-all">Films Marque</button>
+            </div>
+
+            <!-- Grid Items -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolioGrid">
+                
+                <!-- Video Item 1 -->
+                <div class="portfolio-item case-study group rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border hover:border-netflix/50 transition-all duration-500 cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'SaaS enterprise - 2.4M€ de Pipe Généré')">
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="SaaS Case Study" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 rounded-full bg-netflix/90 text-white flex items-center justify-center text-xl group-hover:scale-125 transition-transform glow-red">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                        </div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/80 text-gold text-[10px] font-bold uppercase tracking-wider border border-gold/30">Case Study</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="title-cinzel text-lg font-bold text-white group-hover:text-netflix transition-colors">SaaS Enterprise - Storytelling Client</h3>
+                        <p class="text-xs text-gray-400 mt-2">Film d'impact de 3 min utilisé par l'équipe commerciale grands comptes.</p>
+                        <div class="mt-4 pt-4 border-t border-obsidian-border flex items-center justify-between text-xs text-gold">
+                            <span><i class="fa-solid fa-chart-line mr-1"></i> +140% Conversion Sales</span>
+                            <span class="text-gray-500">3:12</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Item 2 -->
+                <div class="portfolio-item vsl group rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border hover:border-netflix/50 transition-all duration-500 cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'VSL High-Ticket Cabinet Conseil')">
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="VSL High-Ticket" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 rounded-full bg-netflix/90 text-white flex items-center justify-center text-xl group-hover:scale-125 transition-transform glow-red">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                        </div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/80 text-gold text-[10px] font-bold uppercase tracking-wider border border-gold/30">VSL Conversion</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="title-cinzel text-lg font-bold text-white group-hover:text-netflix transition-colors">VSL Stratégique - Cabinet de Conseil</h3>
+                        <p class="text-xs text-gray-400 mt-2">Vidéo de vente à fort taux d'engagement tournée en éclairage chiaroscuro.</p>
+                        <div class="mt-4 pt-4 border-t border-obsidian-border flex items-center justify-between text-xs text-gold">
+                            <span><i class="fa-solid fa-bolt mr-1"></i> Panier Moyen 15k€</span>
+                            <span class="text-gray-500">6:45</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Item 3 -->
+                <div class="portfolio-item cinema group rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border hover:border-netflix/50 transition-all duration-500 cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Manifeste de Marque Fintech')">
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Film Marque" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 rounded-full bg-netflix/90 text-white flex items-center justify-center text-xl group-hover:scale-125 transition-transform glow-red">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                        </div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/80 text-gold text-[10px] font-bold uppercase tracking-wider border border-gold/30">Cinéma Marque</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="title-cinzel text-lg font-bold text-white group-hover:text-netflix transition-colors">Manifeste Cinéma - Scale-up Fintech</h3>
+                        <p class="text-xs text-gray-400 mt-2">Vidéo institutionnelle au look Hollywood pour levée de fonds Serie B.</p>
+                        <div class="mt-4 pt-4 border-t border-obsidian-border flex items-center justify-between text-xs text-gold">
+                            <span><i class="fa-solid fa-trophy mr-1"></i> Levée 8M€ Validée</span>
+                            <span class="text-gray-500">2:15</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Item 4 -->
+                <div class="portfolio-item shorts group rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border hover:border-netflix/50 transition-all duration-500 cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Série Short-Form CEO Branding')">
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Shorts LinkedIn" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 rounded-full bg-netflix/90 text-white flex items-center justify-center text-xl group-hover:scale-125 transition-transform glow-red">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                        </div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/80 text-gold text-[10px] font-bold uppercase tracking-wider border border-gold/30">Shorts / Vertical</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="title-cinzel text-lg font-bold text-white group-hover:text-netflix transition-colors">Personal Branding CEO - Packs Vertical</h3>
+                        <p class="text-xs text-gray-400 mt-2">Série de 12 vidéos 9:16 pour dominer LinkedIn & Instagram Reels.</p>
+                        <div class="mt-4 pt-4 border-t border-obsidian-border flex items-center justify-between text-xs text-gold">
+                            <span><i class="fa-solid fa-eye mr-1"></i> 1.2M Vues Organiques</span>
+                            <span class="text-gray-500">0:45</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Simulateur ROI Interactif -->
+    <section id="roi" class="py-24 bg-gradient-to-b from-obsidian via-obsidian-card/40 to-obsidian relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="p-8 sm:p-12 rounded-3xl glass-card border border-netflix/30 glow-red relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-netflix/10 rounded-full blur-3xl"></div>
+
+                <div class="text-center mb-10">
+                    <span class="text-gold text-xs font-bold uppercase tracking-widest">Calculateur de Rentabilité</span>
+                    <h2 class="title-cinzel text-3xl sm:text-4xl font-bold text-white mt-1">Estimez le ROI de Votre Vidéo B2B</h2>
+                    <p class="text-gray-400 text-sm mt-2">Calculez l'impact financier d'une augmentation de votre taux de closing grâce à la vidéo.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <!-- Controls -->
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-2">
+                                <label class="text-gray-300">Prospects Qualifiés par Mois</label>
+                                <span id="leadsValue" class="text-gold font-bold">30</span>
+                            </div>
+                            <input type="range" id="leadsInput" min="5" max="200" value="30" class="w-full h-2 bg-obsidian-border rounded-lg appearance-none cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-2">
+                                <label class="text-gray-300">Panier Moyen Client (€)</label>
+                                <span id="dealValue" class="text-gold font-bold">5 000 €</span>
+                            </div>
+                            <input type="range" id="dealInput" min="1000" max="50000" step="1000" value="5000" class="w-full h-2 bg-obsidian-border rounded-lg appearance-none cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-2">
+                                <label class="text-gray-300">Hausse estimée du Conversion Rate</label>
+                                <span id="convValue" class="text-netflix font-bold">+15%</span>
+                            </div>
+                            <input type="range" id="convInput" min="5" max="40" value="15" class="w-full h-2 bg-obsidian-border rounded-lg appearance-none cursor-pointer">
+                        </div>
+                    </div>
+
+                    <!-- Output Card -->
+                    <div class="p-6 rounded-2xl bg-obsidian border border-obsidian-border text-center space-y-4">
+                        <span class="text-xs text-gray-400 uppercase tracking-widest">Gain de Chiffre d'Affaires Estimé</span>
+                        <div id="roiResult" class="title-cinzel text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-200 to-gold">
+                            + 22 500 € / mois
+                        </div>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Calcul basé sur l'optimisation du pitch vidéo et de la réassurance client lors de vos phases de prospection.
+                        </p>
+                        <button onclick="openAuditModal()" class="w-full py-3 rounded-xl bg-netflix hover:bg-netflix-hover text-white text-sm font-bold transition-all glow-red">
+                            Obtenir un Audit ROI personnalisé
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Grille d'Offres Tarifaires -->
+    <section id="offres" class="py-24 bg-obsidian">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-netflix text-sm font-semibold tracking-widest uppercase">Investissement Stratégique</span>
+                <h2 class="title-cinzel text-3xl sm:text-5xl font-bold text-white mt-2">Nos Offres de Production</h2>
+                <p class="text-gray-400 text-base mt-2">Transparence totale, aucun frais caché. Des formats taillés pour la conversion.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- Offre 1 -->
+                <div class="rounded-3xl bg-obsidian-card border border-obsidian-border p-8 flex flex-col justify-between hover:border-gray-700 transition-all">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="title-cinzel text-xl font-bold text-white">Pack Conversion</h3>
+                            <span class="px-2.5 py-1 rounded-full bg-obsidian text-gray-400 text-[10px] font-bold uppercase">Unique</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-6">Idéal pour booster une page de vente ou un tunnel High-Ticket.</p>
+                        <div class="mb-6">
+                            <span class="title-cinzel text-4xl font-extrabold text-white">3 500 €</span>
+                            <span class="text-xs text-gray-400"> / projet</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-netflix text-xs"></i><span>1 VSL ou Case Study (2 à 4 min)</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-netflix text-xs"></i><span>Tournage 1 Journée Studio / On-Site</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-netflix text-xs"></i><span>Colorimétrie S-Cinetone 10-bit</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-netflix text-xs"></i><span>Montage Rythmé & Sound Design</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openAuditModal()" class="w-full py-3 rounded-xl bg-obsidian hover:bg-obsidian-hover border border-obsidian-border text-white text-sm font-semibold transition-all">
+                        Sélectionner le Pack
+                    </button>
+                </div>
+
+                <!-- Offre 2 (Star / Featured) -->
+                <div class="rounded-3xl bg-obsidian-card border-2 border-netflix p-8 flex flex-col justify-between relative glow-red scale-105 z-10">
+                    <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-netflix text-white text-[10px] font-extrabold uppercase tracking-widest shadow-md">
+                        Le Plus Populaire
+                    </span>
+                    <div>
+                        <div class="flex justify-between items-center mb-4 mt-2">
+                            <h3 class="title-cinzel text-xl font-bold text-white">Abonnement Branding</h3>
+                            <span class="px-2.5 py-1 rounded-full bg-netflix/20 text-netflix text-[10px] font-bold uppercase">Mensuel</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-6">Pour dominer votre marché sur LinkedIn, Instagram & YouTube Shorts.</p>
+                        <div class="mb-6">
+                            <span class="title-cinzel text-4xl font-extrabold text-white">1 500 €</span>
+                            <span class="text-xs text-gray-400"> / mois</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-gold text-xs"></i><span>8 à 12 Shorts / Reels par mois</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-gold text-xs"></i><span>1 Demi-Journée de Tournage mensuelle</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-gold text-xs"></i><span>Découpage & Directing de Contenu</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-gold text-xs"></i><span>Sous-titrage Dynamique & Hooks</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openAuditModal()" class="w-full py-3.5 rounded-xl bg-netflix hover:bg-netflix-hover text-white text-sm font-bold transition-all shadow-lg">
+                        S'abonner Maintenant
+                    </button>
+                </div>
+
+                <!-- Offre 3 -->
+                <div class="rounded-3xl bg-obsidian-card border border-obsidian-border p-8 flex flex-col justify-between hover:border-gray-700 transition-all">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="title-cinzel text-xl font-bold text-white">Film Sur-Mesure</h3>
+                            <span class="px-2.5 py-1 rounded-full bg-obsidian text-gold text-[10px] font-bold uppercase">Écosystème</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-6">Production complète pour campagne de marque globale.</p>
+                        <div class="mb-6">
+                            <span class="title-cinzel text-4xl font-extrabold text-gold">Sur Devis</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-gold text-xs"></i><span>Multi-Lieux & Multi-Intervenants</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-gold text-xs"></i><span>Scénarisation & Copywriting complet</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-gold text-xs"></i><span>Équipe Technique Cinéma dédiée</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-gold text-xs"></i><span>Droits de diffusion complets</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openAuditModal()" class="w-full py-3 rounded-xl bg-obsidian hover:bg-obsidian-hover border border-obsidian-border text-white text-sm font-semibold transition-all">
+                        Demander une Proposition
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Section Matériel Cinéma -->
+    <section id="gear" class="py-20 bg-obsidian-card/40 border-y border-obsidian-border relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-gold text-xs font-bold uppercase tracking-widest">Matériel Professionnel</span>
+                <h2 class="title-cinzel text-2xl sm:text-3xl font-bold text-white mt-1">L'Excellence Technique Cinéma</h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="p-5 rounded-2xl bg-obsidian border border-obsidian-border text-center">
+                    <i class="fa-solid fa-video text-netflix text-2xl mb-3"></i>
+                    <h4 class="text-white font-bold text-sm">Sony FX30 Cinema</h4>
+                    <p class="text-xs text-gray-400 mt-1">4K 10-bit 4:2:2 natif, profil S-Cinetone pour un rendu peau naturel.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-obsidian border border-obsidian-border text-center">
+                    <i class="fa-solid fa-circle-dot text-gold text-2xl mb-3"></i>
+                    <h4 class="text-white font-bold text-sm">Optiques Sigma f/1.4</h4>
+                    <p class="text-xs text-gray-400 mt-1">Flou d'arrière-plan (Bokeh) doux et piqué d'image chirurgical.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-obsidian border border-obsidian-border text-center">
+                    <i class="fa-solid fa-lightbulb text-netflix text-2xl mb-3"></i>
+                    <h4 class="text-white font-bold text-sm">Éclairage COB Studio</h4>
+                    <p class="text-xs text-gray-400 mt-1">Keylight & backlight paramétrables pour atmosphère cinéma.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-obsidian border border-obsidian-border text-center">
+                    <i class="fa-solid fa-microphone-lines text-gold text-2xl mb-3"></i>
+                    <h4 class="text-white font-bold text-sm">Prise de Son Broadcast</h4>
+                    <p class="text-xs text-gray-400 mt-1">Microphones cravates HF & HF Sennheiser pour une voix cristalline.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-obsidian border-t border-obsidian-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded bg-netflix flex items-center justify-center text-white font-bold text-sm">
+                    <i class="fa-solid fa-film"></i>
+                </div>
+                <span class="title-cinzel text-lg font-bold text-white tracking-widest">STUDIO CINÉMA</span>
+            </div>
+            <p class="text-xs text-gray-500">© 2026 Studio Cinéma B2B. Tous droits réservés. Design 100% Mode Sombre Natif.</p>
+            <div class="flex space-x-6 text-gray-400 text-lg">
+                <a href="#" class="hover:text-netflix transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" class="hover:text-netflix transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="hover:text-netflix transition-colors"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 8. Modal de Réservation d'Audit -->
+    <div id="auditModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 px-4">
+        <div class="bg-obsidian-card border border-netflix/40 w-full max-w-lg rounded-3xl p-6 sm:p-8 relative glow-red text-left">
+            <button onclick="closeAuditModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <span class="text-gold text-xs font-bold uppercase tracking-widest">Audit Stratégique Offert</span>
+            <h3 class="title-cinzel text-2xl font-bold text-white mt-1">Réserver Votre Session Vidéo</h3>
+            <p class="text-xs text-gray-400 mt-1 mb-6">Analysez votre potentiel de conversion vidéo avec le réalisateur en 30 min.</p>
+
+            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Nom Complet</label>
+                    <input type="text" required placeholder="ex: Marc Dupont" class="w-full px-4 py-3 rounded-xl bg-obsidian border border-obsidian-border text-white text-sm focus:border-netflix focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Email Professionnel</label>
+                    <input type="email" required placeholder="marc@entreprise.com" class="w-full px-4 py-3 rounded-xl bg-obsidian border border-obsidian-border text-white text-sm focus:border-netflix focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Objectif Principal</label>
+                    <select class="w-full px-4 py-3 rounded-xl bg-obsidian border border-obsidian-border text-white text-sm focus:border-netflix focus:outline-none">
+                        <option>Générer plus de leads qualifiés (VSL)</option>
+                        <option>Rassurer mes grands comptes (Case Study)</option>
+                        <option>Développer mon Personal Branding (Shorts)</option>
+                        <option>Projet de marque complet sur-mesure</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full py-4 rounded-xl bg-netflix hover:bg-netflix-hover text-white font-bold text-sm transition-all glow-red mt-2">
+                    Confirmer ma demande d'Audit
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Video Modal Lightbox -->
+    <div id="videoModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 px-4">
+        <div class="w-full max-w-4xl rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border relative">
+            <button onclick="closeVideoModal()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 text-white hover:text-netflix flex items-center justify-center text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="p-4 border-b border-obsidian-border">
+                <h4 id="videoModalTitle" class="title-cinzel text-lg font-bold text-white">Vidéo Demo</h4>
+            </div>
+            <div class="relative aspect-video">
+                <iframe id="videoIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive JavaScript Logic -->
+    <script>
+        // ROI Simulator Calculations
+        const leadsInput = document.getElementById('leadsInput');
+        const dealInput = document.getElementById('dealInput');
+        const convInput = document.getElementById('convInput');
+
+        const leadsValue = document.getElementById('leadsValue');
+        const dealValue = document.getElementById('dealValue');
+        const convValue = document.getElementById('convValue');
+        const roiResult = document.getElementById('roiResult');
+
+        function updateROI() {
+            const leads = parseInt(leadsInput.value);
+            const deal = parseInt(dealInput.value);
+            const conv = parseInt(convInput.value);
+
+            leadsValue.innerText = leads;
+            dealValue.innerText = deal.toLocaleString('fr-FR') + ' €';
+            convValue.innerText = '+' + conv + '%';
+
+            // Additional Revenue Formula
+            const additionalRevenue = Math.round(leads * (conv / 100) * deal);
+            roiResult.innerText = '+ ' + additionalRevenue.toLocaleString('fr-FR') + ' € / mois';
+        }
+
+        if (leadsInput) {
+            leadsInput.addEventListener('input', updateROI);
+            dealInput.addEventListener('input', updateROI);
+            convInput.addEventListener('input', updateROI);
+            updateROI();
+        }
+
+        // Portfolio Filtering
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const filterBtns = document.querySelectorAll('.portfolio-filter-btn');
+
+            filterBtns.forEach(btn => {
+                btn.classList.remove('bg-netflix', 'text-white');
+                btn.classList.add('bg-obsidian-card', 'text-gray-400');
+            });
+            event.target.classList.add('bg-netflix', 'text-white');
+            event.target.classList.remove('bg-obsidian-card', 'text-gray-400');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Audit Modal Controls
+        function openAuditModal() {
+            const modal = document.getElementById('auditModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        }
+
+        function closeAuditModal() {
+            const modal = document.getElementById('auditModal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        // Video Modal Controls
+        function openVideoModal(url, title) {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoIframe');
+            const titleElem = document.getElementById('videoModalTitle');
+
+            iframe.src = url + '?autoplay=1';
+            titleElem.innerText = title;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoIframe');
+            
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                iframe.src = '';
+            }, 300);
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert('Merci ! Votre demande d\'audit stratégique a bien été envoyée. Alexandre reprendra contact sous 24h.');
+            closeAuditModal();
+        }
+    </script>
+</body>
+</html>

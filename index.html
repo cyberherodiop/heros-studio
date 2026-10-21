@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Cinéma - Production Vidéo B2B High-Ticket</title>
+    <title>Héros Studio - Production Vidéo B2B High-Ticket</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@
                         }
                     },
                     fontFamily: {
-                        cinzel: ['Cinzel', 'serif'],
+                        cinzel: ['Montserrat', 'sans-serif'],
                         sans: ['Inter', 'sans-serif']
                     }
                 }
@@ -47,7 +47,7 @@
     </script>
 
     <style>
-        /* Force Always Dark Cinema Aesthetic */
+        /* Base & Design System */
         body {
             background-color: #090a0c;
             color: #f3f4f6;
@@ -74,17 +74,65 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
 
+        /* === ANIMATIONS GRAPHIQUES WAOUH === */
+        
+        /* Shimmer Effect sur les Titres */
+        .shimmer-text {
+            background: linear-gradient(90deg, #ffffff 0%, #e50914 25%, #d4af37 50%, #e50914 75%, #ffffff 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 5s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* Effet d'arrière-plan animé / Flottement */
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: float 8s ease-in-out 2s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        /* Halo néon pulsant */
+        .animate-pulse-glow {
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.25; transform: scale(1); }
+            50% { opacity: 0.45; transform: scale(1.08); }
+        }
+
+        /* Card Surélévation & Glow au survol */
+        .hover-wow-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .hover-wow-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 15px 35px rgba(229, 9, 20, 0.25), 0 0 15px rgba(212, 175, 55, 0.15);
+            border-color: rgba(229, 9, 20, 0.5);
+        }
+
         /* Glowing Effects */
         .glow-red {
             box-shadow: 0 0 25px rgba(229, 9, 20, 0.25);
         }
         
         .glow-red:hover {
-            box-shadow: 0 0 35px rgba(229, 9, 20, 0.45);
-        }
-
-        .glow-gold {
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 35px rgba(229, 9, 20, 0.5);
         }
 
         /* Custom Scrollbar */
@@ -115,7 +163,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Logo -->
             <a href="#" class="flex items-center group">
-                <img src="logo-heros-studio.jpg" alt="Héros Studio - Production Vidéo" class="h-13 md:h-16 w-auto object-contain group-hover:scale-115 transition-transform">
+                <img src="logo-heros-studio.jpg" alt="Héros Studio - Production Vidéo" class="h-12 md:h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300">
             </a>
 
             <!-- Navigation Links -->
@@ -127,9 +175,9 @@
                 <a href="#gear" class="hover:text-netflix transition-colors">Matériel</a>
             </nav>
 
-            <!-- Action Button (sans commutateur de mode) -->
+            <!-- Action Button -->
             <div class="flex items-center space-x-4">
-                <button onclick="openAuditModal()" class="px-5 py-2.5 rounded-full bg-netflix hover:bg-netflix-hover text-white text-sm font-semibold transition-all duration-300 glow-red flex items-center space-x-2">
+                <button onclick="openAuditModal()" class="px-5 py-2.5 rounded-full bg-netflix hover:bg-netflix-hover text-white text-sm font-semibold transition-all duration-300 glow-red hover:scale-105 flex items-center space-x-2">
                     <i class="fa-solid fa-calendar-check text-xs"></i>
                     <span>Réserver un RDV</span>
                 </button>
@@ -151,23 +199,23 @@
         </div>
     </header>
 
-    <!-- 2. Section Hero Impact -->
+    <!-- 2. Section Hero Impact avec Animations Graphic Design -->
     <section class="relative min-h-screen pt-28 pb-20 flex items-center justify-center overflow-hidden">
-        <!-- Ambient Cinema Background Effect -->
+        <!-- Ambient Cinema Background Effect Animated -->
         <div class="absolute inset-0 bg-gradient-to-b from-netflix/10 via-obsidian to-obsidian pointer-events-none"></div>
-        <div class="absolute -top-40 -right-40 w-96 h-96 bg-netflix/20 rounded-full blur-[128px] pointer-events-none"></div>
-        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gold/10 rounded-full blur-[128px] pointer-events-none"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-netflix/25 rounded-full blur-[128px] pointer-events-none animate-float animate-pulse-glow"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gold/15 rounded-full blur-[128px] pointer-events-none animate-float-delayed"></div>
 
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <!-- Badge Top -->
-            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-obsidian-card border border-netflix/40 text-gold text-xs font-semibold uppercase tracking-widest mb-8 shadow-inner">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-obsidian-card border border-netflix/40 text-gold text-xs font-semibold uppercase tracking-widest mb-8 shadow-inner animate-pulse">
                 <span class="w-2 h-2 rounded-full bg-netflix animate-ping"></span>
                 <span>Production vidéo B2B & Storytelling high-ticket</span>
             </div>
 
-            <!-- Title -->
+            <!-- Title avec effet Shimmer -->
             <h1 class="title-cinzel text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-8">
-                Transformez vos prospects en clients grâce à <span class="text-transparent bg-clip-text bg-gradient-to-r from-netflix via-red-500 to-gold">la vidéo</span>
+                Transformez vos prospects en clients grâce à <span class="shimmer-text">la vidéo</span>
             </h1>
 
             <!-- Subtitle -->
@@ -177,35 +225,15 @@
 
             <!-- CTA Buttons -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16">
-                <button onclick="openAuditModal()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-netflix hover:bg-netflix-hover text-white font-bold text-base transition-all duration-300 glow-red flex items-center justify-center space-x-3 group">
+                <button onclick="openAuditModal()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-netflix hover:bg-netflix-hover text-white font-bold text-base transition-all duration-300 glow-red hover:scale-105 flex items-center justify-center space-x-3 group">
                     <span>Démarrer un projet vidéo</span>
-                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
                 </button>
-                <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-full bg-obsidian-card hover:bg-obsidian-hover border border-obsidian-border text-white font-semibold text-base transition-all duration-300 flex items-center justify-center space-x-3">
-                    <i class="fa-solid fa-play text-netflix text-sm"></i>
+                <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-full bg-obsidian-card hover:bg-obsidian-hover border border-obsidian-border text-white font-semibold text-base transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-3">
+                    <i class="fa-solid fa-play text-netflix text-sm animate-pulse"></i>
                     <span>Voir notre showreel</span>
                 </a>
             </div>
-
-            <!-- Social Metrics Bar -->
-            <!-- <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-obsidian-border/60 max-w-4xl mx-auto">
-                <div class="p-4 rounded-2xl bg-obsidian-card/50 border border-obsidian-border">
-                    <p class="title-cinzel text-3xl font-bold text-gold">+15M€</p>
-                    <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">CA Généré pour nos Clients</p>
-                </div>
-                <div class="p-4 rounded-2xl bg-obsidian-card/50 border border-obsidian-border">
-                    <p class="title-cinzel text-3xl font-bold text-white">120+</p>
-                    <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Productions B2B Livrées</p>
-                </div>
-                <div class="p-4 rounded-2xl bg-obsidian-card/50 border border-obsidian-border">
-                    <p class="title-cinzel text-3xl font-bold text-netflix">4.9/5</p>
-                    <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Satisfaction Client</p>
-                </div>
-                <div class="p-4 rounded-2xl bg-obsidian-card/50 border border-obsidian-border">
-                    <p class="title-cinzel text-3xl font-bold text-white">4K 10-bit</p>
-                    <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Qualité Broadcast Sony</p>
-                </div>
-            </div> -->
         </div>
     </section>
 
@@ -216,10 +244,10 @@
                 
                 <!-- Frame Photo du Réalisateur -->
                 <div class="lg:col-span-5 relative">
-                    <div class="relative mx-auto max-w-md lg:max-w-none rounded-2xl overflow-hidden border-2 border-netflix/30 glow-red group">
+                    <div class="relative mx-auto max-w-md lg:max-w-none rounded-2xl overflow-hidden border-2 border-netflix/40 glow-red group hover-wow-card">
                         <img src="director-portrait.jpg" 
                              alt="Portrait du Réalisateur" 
-                             class="w-full h-[480px] object-cover object-center filter grayscale contrast-100 group-hover:grayscale-0 transition-all duration-700">
+                             class="w-full h-[480px] object-cover object-center filter contrast-105 group-hover:scale-105 transition-all duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-90"></div>
                         
                         <!-- Badge Overlay -->
@@ -236,7 +264,7 @@
                 <!-- Textes Éditoriaux & Vision -->
                 <div class="lg:col-span-7 space-y-6">
                     <div class="inline-flex items-center space-x-2 text-netflix text-sm font-semibold tracking-wider uppercase">
-                        <i class="fa-solid fa-clapperboard"></i>
+                        <i class="fa-solid fa-clapperboard animate-bounce"></i>
                         <span>L'excellence technique au service de la conversion</span>
                     </div>
 
@@ -254,14 +282,14 @@
 
                     <!-- Points Forts -->
                     <div class="grid sm:grid-cols-2 gap-4 pt-4">
-                        <div class="p-4 rounded-xl bg-obsidian-card border border-obsidian-border flex items-start space-x-3">
+                        <div class="p-4 rounded-xl bg-obsidian-card border border-obsidian-border flex items-start space-x-3 hover-wow-card">
                             <i class="fa-solid fa-camera-retro text-gold text-lg mt-1"></i>
                             <div>
-                                <h4 class="text-white font-semibold text-sm">Rendu s-cinetone natif</h4>
+                                <h4 class="text-white font-semibold text-sm">Rendu S-Cinetone natif</h4>
                                 <p class="text-xs text-gray-400 mt-0.5">Teintes de peau naturelles et look cinéma immédiat.</p>
                             </div>
                         </div>
-                        <div class="p-4 rounded-xl bg-obsidian-card border border-obsidian-border flex items-start space-x-3">
+                        <div class="p-4 rounded-xl bg-obsidian-card border border-obsidian-border flex items-start space-x-3 hover-wow-card">
                             <i class="fa-solid fa-chart-line text-netflix text-lg mt-1"></i>
                             <div>
                                 <h4 class="text-white font-semibold text-sm">Structure VSL orientée ROI</h4>
@@ -286,18 +314,18 @@
 
             <!-- Filter Buttons -->
             <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12">
-                <button onclick="filterPortfolio('all')" class="portfolio-filter-btn active px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-netflix text-white transition-all">Tous</button>
+                <button onclick="filterPortfolio('all')" class="portfolio-filter-btn active px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-netflix text-white transition-all shadow-lg">Tous</button>
                 <button onclick="filterPortfolio('case-study')" class="portfolio-filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-obsidian-card text-gray-400 hover:text-white border border-obsidian-border transition-all">Case Studies B2B</button>
                 <button onclick="filterPortfolio('vsl')" class="portfolio-filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-obsidian-card text-gray-400 hover:text-white border border-obsidian-border transition-all">VSL high-ticket</button>
                 <button onclick="filterPortfolio('shorts')" class="portfolio-filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-obsidian-card text-gray-400 hover:text-white border border-obsidian-border transition-all">Shorts / Reels</button>
                 <button onclick="filterPortfolio('cinema')" class="portfolio-filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-obsidian-card text-gray-400 hover:text-white border border-obsidian-border transition-all">Films marque</button>
             </div>
 
-            <!-- Grid Items -->
+            <!-- Grid Items avec Hover WOW -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolioGrid">
                 
                 <!-- Video Item 1 -->
-                <div class="portfolio-item case-study group rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border hover:border-netflix/50 transition-all duration-500 cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'SaaS enterprise - 2.4M€ de Pipe Généré')">
+                <div class="portfolio-item case-study group rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border hover-wow-card cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'SaaS enterprise - 2.4M€ de Pipe Généré')">
                     <div class="relative aspect-video overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="SaaS étude de cas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent"></div>
@@ -319,7 +347,7 @@
                 </div>
 
                 <!-- Video Item 2 -->
-                <div class="portfolio-item vsl group rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border hover:border-netflix/50 transition-all duration-500 cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'VSL High-Ticket Cabinet Conseil')">
+                <div class="portfolio-item vsl group rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border hover-wow-card cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'VSL High-Ticket Cabinet Conseil')">
                     <div class="relative aspect-video overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="VSL High-Ticket" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent"></div>
@@ -341,7 +369,7 @@
                 </div>
 
                 <!-- Video Item 3 -->
-                <div class="portfolio-item cinema group rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border hover:border-netflix/50 transition-all duration-500 cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Manifeste de Marque Fintech')">
+                <div class="portfolio-item cinema group rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border hover-wow-card cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Manifeste de Marque Fintech')">
                     <div class="relative aspect-video overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Film Marque" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent"></div>
@@ -362,28 +390,6 @@
                     </div>
                 </div>
 
-                <!-- Video Item 4 -->
-                <div class="portfolio-item shorts group rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border hover:border-netflix/50 transition-all duration-500 cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Série Short-Form CEO Branding')">
-                    <div class="relative aspect-video overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Shorts LinkedIn" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-14 h-14 rounded-full bg-netflix/90 text-white flex items-center justify-center text-xl group-hover:scale-125 transition-transform glow-red">
-                                <i class="fa-solid fa-play ml-1"></i>
-                            </div>
-                        </div>
-                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/80 text-gold text-[10px] font-bold uppercase tracking-wider border border-gold/30">Shorts / Vertical</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="title-cinzel text-lg font-bold text-white group-hover:text-netflix transition-colors">Personal branding CEO - Packs vertical</h3>
-                        <p class="text-xs text-gray-400 mt-2">Série de 12 vidéos 9:16 pour dominer LinkedIn & Instagram Reels.</p>
-                        <div class="mt-4 pt-4 border-t border-obsidian-border flex items-center justify-between text-xs text-gold">
-                            <span><i class="fa-solid fa-eye mr-1"></i> 1.2M vues organiques</span>
-                            <span class="text-gray-500">0:45</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -391,8 +397,8 @@
     <!-- 5. Simulateur ROI Interactif -->
     <section id="roi" class="py-24 bg-gradient-to-b from-obsidian via-obsidian-card/40 to-obsidian relative">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="p-8 sm:p-12 rounded-3xl glass-card border border-netflix/30 glow-red relative overflow-hidden">
-                <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-netflix/10 rounded-full blur-3xl"></div>
+            <div class="p-8 sm:p-12 rounded-3xl glass-card border border-netflix/30 glow-red relative overflow-hidden hover-wow-card">
+                <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-netflix/10 rounded-full blur-3xl animate-pulse-glow"></div>
 
                 <div class="text-center mb-10">
                     <span class="text-gold text-xs font-bold uppercase tracking-widest">Calculateur de rentabilité</span>
@@ -437,7 +443,7 @@
                         <p class="text-xs text-gray-400 leading-relaxed">
                             Calcul basé sur l'optimisation du pitch vidéo et de la réassurance client lors de vos phases de prospection.
                         </p>
-                        <button onclick="openAuditModal()" class="w-full py-3 rounded-xl bg-netflix hover:bg-netflix-hover text-white text-sm font-bold transition-all glow-red">
+                        <button onclick="openAuditModal()" class="w-full py-3 rounded-xl bg-netflix hover:bg-netflix-hover text-white text-sm font-bold transition-all glow-red hover:scale-105">
                             Obtenir un Audit ROI personnalisé
                         </button>
                     </div>
@@ -446,7 +452,7 @@
         </div>
     </section>
 
-    <!-- 6. Grille d'Offres Tarifaires -->
+    <!-- 6. Grille d'Offres Tarifaires avec WOW Cards -->
     <section id="offres" class="py-24 bg-obsidian">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -458,7 +464,7 @@
             <div class="grid md:grid-cols-3 gap-8 items-stretch">
                 
                 <!-- Offre 1 -->
-                <div class="rounded-3xl bg-obsidian-card border border-obsidian-border p-8 flex flex-col justify-between hover:border-gray-700 transition-all">
+                <div class="rounded-3xl bg-obsidian-card border border-obsidian-border p-8 flex flex-col justify-between hover-wow-card">
                     <div>
                         <div class="flex justify-between items-center mb-4">
                             <h3 class="title-cinzel text-xl font-bold text-white">Pack conversion</h3>
@@ -472,17 +478,17 @@
                         <ul class="space-y-3 text-sm text-gray-300 mb-8">
                             <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-netflix text-xs"></i><span>1 VSL ou étude de cas (2 à 4 min)</span></li>
                             <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-netflix text-xs"></i><span>Tournage 1 journée studio / On-Site</span></li>
-                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-netflix text-xs"></i><span>Colorimétrie s-cinetone 10-bit</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-netflix text-xs"></i><span>Colorimétrie S-Cinetone 10-bit</span></li>
                             <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-netflix text-xs"></i><span>Montage rythmé & sound design</span></li>
                         </ul>
                     </div>
-                    <button onclick="openAuditModal()" class="w-full py-3 rounded-xl bg-obsidian hover:bg-obsidian-hover border border-obsidian-border text-white text-sm font-semibold transition-all">
+                    <button onclick="openAuditModal()" class="w-full py-3 rounded-xl bg-obsidian hover:bg-obsidian-hover border border-obsidian-border text-white text-sm font-semibold transition-all hover:border-netflix">
                         Sélectionner le pack
                     </button>
                 </div>
 
-                <!-- Offre 2 (Star / Featured) -->
-                <div class="rounded-3xl bg-obsidian-card border-2 border-netflix p-8 flex flex-col justify-between relative glow-red scale-105 z-10">
+                <!-- Offre 2 (Featured Star) -->
+                <div class="rounded-3xl bg-obsidian-card border-2 border-netflix p-8 flex flex-col justify-between relative glow-red hover-wow-card scale-105 z-10">
                     <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-netflix text-white text-[10px] font-extrabold uppercase tracking-widest shadow-md">
                         Le plus populaire
                     </span>
@@ -503,13 +509,13 @@
                             <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-gold text-xs"></i><span>Sous-titrage dynamique & hooks</span></li>
                         </ul>
                     </div>
-                    <button onclick="openAuditModal()" class="w-full py-3.5 rounded-xl bg-netflix hover:bg-netflix-hover text-white text-sm font-bold transition-all shadow-lg">
+                    <button onclick="openAuditModal()" class="w-full py-3.5 rounded-xl bg-netflix hover:bg-netflix-hover text-white text-sm font-bold transition-all shadow-lg hover:scale-105">
                         S'abonner maintenant
                     </button>
                 </div>
 
                 <!-- Offre 3 -->
-                <div class="rounded-3xl bg-obsidian-card border border-obsidian-border p-8 flex flex-col justify-between hover:border-gray-700 transition-all">
+                <div class="rounded-3xl bg-obsidian-card border border-obsidian-border p-8 flex flex-col justify-between hover-wow-card">
                     <div>
                         <div class="flex justify-between items-center mb-4">
                             <h3 class="title-cinzel text-xl font-bold text-white">Film sur-mesure</h3>
@@ -526,7 +532,7 @@
                             <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-gold text-xs"></i><span>Droits de diffusion complets</span></li>
                         </ul>
                     </div>
-                    <button onclick="openAuditModal()" class="w-full py-3 rounded-xl bg-obsidian hover:bg-obsidian-hover border border-obsidian-border text-white text-sm font-semibold transition-all">
+                    <button onclick="openAuditModal()" class="w-full py-3 rounded-xl bg-obsidian hover:bg-obsidian-hover border border-obsidian-border text-white text-sm font-semibold transition-all hover:border-gold">
                         Demander une proposition
                     </button>
                 </div>
@@ -544,22 +550,22 @@
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="p-5 rounded-2xl bg-obsidian border border-obsidian-border text-center">
+                <div class="p-5 rounded-2xl bg-obsidian border border-obsidian-border text-center hover-wow-card">
                     <i class="fa-solid fa-video text-netflix text-2xl mb-3"></i>
                     <h4 class="text-white font-bold text-sm">Caméra Sony</h4>
-                    <p class="text-xs text-gray-400 mt-1">4K 10-bit 4:2:2 natif, profil s-cinetone pour un rendu peau naturel.</p>
+                    <p class="text-xs text-gray-400 mt-1">4K 10-bit 4:2:2 natif, profil S-Cinetone pour un rendu peau naturel.</p>
                 </div>
-                <div class="p-5 rounded-2xl bg-obsidian border border-obsidian-border text-center">
+                <div class="p-5 rounded-2xl bg-obsidian border border-obsidian-border text-center hover-wow-card">
                     <i class="fa-solid fa-circle-dot text-gold text-2xl mb-3"></i>
                     <h4 class="text-white font-bold text-sm">Optiques Sigma</h4>
                     <p class="text-xs text-gray-400 mt-1">Flou d'arrière-plan (Bokeh) doux et piqué d'image chirurgical.</p>
                 </div>
-                <div class="p-5 rounded-2xl bg-obsidian border border-obsidian-border text-center">
+                <div class="p-5 rounded-2xl bg-obsidian border border-obsidian-border text-center hover-wow-card">
                     <i class="fa-solid fa-lightbulb text-netflix text-2xl mb-3"></i>
                     <h4 class="text-white font-bold text-sm">Éclairage COB studio</h4>
                     <p class="text-xs text-gray-400 mt-1">Keylight & backlight paramétrables pour atmosphère cinéma.</p>
                 </div>
-                <div class="p-5 rounded-2xl bg-obsidian border border-obsidian-border text-center">
+                <div class="p-5 rounded-2xl bg-obsidian border border-obsidian-border text-center hover-wow-card">
                     <i class="fa-solid fa-microphone-lines text-gold text-2xl mb-3"></i>
                     <h4 class="text-white font-bold text-sm">Prise de son</h4>
                     <p class="text-xs text-gray-400 mt-1">Micro cravates HF Saramonic pour une voix cristalline.</p>
@@ -572,12 +578,11 @@
     <footer class="py-12 bg-obsidian border-t border-obsidian-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center space-x-3">
-               
                 <a href="#" class="flex items-center group">
-                    <img src="logo-heros-studio.jpg" alt="Héros Studio - Production Vidéo" class="h-13 md:h-16 w-auto object-contain group-hover:scale-115 transition-transform">
+                    <img src="logo-heros-studio.jpg" alt="Héros Studio - Production Vidéo" class="h-12 md:h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300">
                 </a>
             </div>
-            <p class="text-xs text-gray-500">© 2026 Héros studioa B2B. Tous droits réservés. Site réalisé par Cyber Héros</p>
+            <p class="text-xs text-gray-500">© 2026 Héros Studio B2B. Tous droits réservés. Site développé par Cyber Héros.</p>
             <div class="flex space-x-6 text-gray-400 text-lg">
                 <a href="#" class="hover:text-netflix transition-colors"><i class="fa-brands fa-linkedin"></i></a>
                 <a href="#" class="hover:text-netflix transition-colors"><i class="fa-brands fa-youtube"></i></a>
@@ -594,7 +599,7 @@
             </button>
 
             <span class="text-gold text-xs font-bold uppercase tracking-widest">Audit stratégique gratuit</span>
-            <h3 class="title-cinzel text-2xl font-bold text-white mt-1">Réserver votre Session vidéo</h3>
+            <h3 class="title-cinzel text-2xl font-bold text-white mt-1">Réserver votre session vidéo</h3>
             <p class="text-xs text-gray-400 mt-1 mb-6">Analysez votre potentiel de conversion vidéo avec le réalisateur en 30 min.</p>
 
             <form onsubmit="handleFormSubmit(event)" class="space-y-4">
@@ -608,138 +613,4 @@
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-gray-300 mb-1">Objectif principal</label>
-                    <select class="w-full px-4 py-3 rounded-xl bg-obsidian border border-obsidian-border text-white text-sm focus:border-netflix focus:outline-none">
-                        <option>Générer plus de leads qualifiés (VSL)</option>
-                        <option>Rassurer mes grands comptes (étude de cas)</option>
-                        <option>Développer mon Personal Branding (Shorts)</option>
-                        <option>Projet de marque complet sur-mesure</option>
-                    </select>
-                </div>
-                <button type="submit" class="w-full py-4 rounded-xl bg-netflix hover:bg-netflix-hover text-white font-bold text-sm transition-all glow-red mt-2">
-                    Confirmer ma demande d'Audit
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Video Modal Lightbox -->
-    <div id="videoModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 px-4">
-        <div class="w-full max-w-4xl rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border relative">
-            <button onclick="closeVideoModal()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 text-white hover:text-netflix flex items-center justify-center text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="p-4 border-b border-obsidian-border">
-                <h4 id="videoModalTitle" class="title-cinzel text-lg font-bold text-white">Vidéo demo</h4>
-            </div>
-            <div class="relative aspect-video">
-                <iframe id="videoIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-
-    <!-- Interactive JavaScript Logic -->
-    <script>
-        // ROI Simulator Calculations
-        const leadsInput = document.getElementById('leadsInput');
-        const dealInput = document.getElementById('dealInput');
-        const convInput = document.getElementById('convInput');
-
-        const leadsValue = document.getElementById('leadsValue');
-        const dealValue = document.getElementById('dealValue');
-        const convValue = document.getElementById('convValue');
-        const roiResult = document.getElementById('roiResult');
-
-        function updateROI() {
-            const leads = parseInt(leadsInput.value);
-            const deal = parseInt(dealInput.value);
-            const conv = parseInt(convInput.value);
-
-            leadsValue.innerText = leads;
-            dealValue.innerText = deal.toLocaleString('fr-FR') + ' €';
-            convValue.innerText = '+' + conv + '%';
-
-            // Additional Revenue Formula
-            const additionalRevenue = Math.round(leads * (conv / 100) * deal);
-            roiResult.innerText = '+ ' + additionalRevenue.toLocaleString('fr-FR') + ' € / mois';
-        }
-
-        if (leadsInput) {
-            leadsInput.addEventListener('input', updateROI);
-            dealInput.addEventListener('input', updateROI);
-            convInput.addEventListener('input', updateROI);
-            updateROI();
-        }
-
-        // Portfolio Filtering
-        function filterPortfolio(category) {
-            const items = document.querySelectorAll('.portfolio-item');
-            const filterBtns = document.querySelectorAll('.portfolio-filter-btn');
-
-            filterBtns.forEach(btn => {
-                btn.classList.remove('bg-netflix', 'text-white');
-                btn.classList.add('bg-obsidian-card', 'text-gray-400');
-            });
-            event.target.classList.add('bg-netflix', 'text-white');
-            event.target.classList.remove('bg-obsidian-card', 'text-gray-400');
-
-            items.forEach(item => {
-                if (category === 'all' || item.classList.contains(category)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-
-        // Audit Modal Controls
-        function openAuditModal() {
-            const modal = document.getElementById('auditModal');
-            modal.classList.remove('hidden');
-            setTimeout(() => modal.classList.remove('opacity-0'), 10);
-        }
-
-        function closeAuditModal() {
-            const modal = document.getElementById('auditModal');
-            modal.classList.add('opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
-        }
-
-        // Video Modal Controls
-        function openVideoModal(url, title) {
-            const modal = document.getElementById('videoModal');
-            const iframe = document.getElementById('videoIframe');
-            const titleElem = document.getElementById('videoModalTitle');
-
-            iframe.src = url + '?autoplay=1';
-            titleElem.innerText = title;
-
-            modal.classList.remove('hidden');
-            setTimeout(() => modal.classList.remove('opacity-0'), 10);
-        }
-
-        function closeVideoModal() {
-            const modal = document.getElementById('videoModal');
-            const iframe = document.getElementById('videoIframe');
-            
-            modal.classList.add('opacity-0');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                iframe.src = '';
-            }, 300);
-        }
-
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Form Submit Handler
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            alert('Merci ! Votre demande d\'audit stratégique a bien été envoyée. Alexandre reprendra contact sous 24h.');
-            closeAuditModal();
-        }
-    </script>
-</body>
-</html>
+                    <select class="w-full px-4 py-3 rounded-xl bg-obsidian border border-obsidian-border text

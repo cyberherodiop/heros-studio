@@ -72,8 +72,6 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        /* === ANIMATIONS CSS FLUIDES & SANS DÉPENDANCE === */
-        
         .shimmer-text {
             background: linear-gradient(90deg, #ffffff 0%, #e50914 25%, #d4af37 50%, #e50914 75%, #ffffff 100%);
             background-size: 200% auto;
@@ -111,7 +109,6 @@
             box-shadow: 0 0 25px rgba(229, 9, 20, 0.25);
         }
 
-        /* Continuous Fade In Animation for Content */
         .fade-in-up {
             animation: fadeInUp 0.8s ease-out forwards;
         }
@@ -157,6 +154,7 @@
 
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
                 <a href="#about" class="hover:text-netflix transition-colors">Le réalisateur</a>
+                <a href="#pourquoi-video" class="hover:text-netflix transition-colors">Pourquoi la vidéo ?</a>
                 <a href="#portfolio" class="hover:text-netflix transition-colors">Réalisations</a>
                 <a href="#roi" class="hover:text-netflix transition-colors">Simulateur ROI</a>
                 <a href="#offres" class="hover:text-netflix transition-colors">Offres</a>
@@ -177,6 +175,7 @@
 
         <div id="mobileMenu" class="hidden md:hidden bg-obsidian-card border-b border-obsidian-border px-6 py-6 space-y-4">
             <a href="#about" class="mobile-link block text-gray-300 hover:text-netflix font-medium">Le Réalisateur</a>
+            <a href="#pourquoi-video" class="mobile-link block text-gray-300 hover:text-netflix font-medium">Pourquoi la vidéo ?</a>
             <a href="#portfolio" class="mobile-link block text-gray-300 hover:text-netflix font-medium">Réalisations</a>
             <a href="#roi" class="mobile-link block text-gray-300 hover:text-netflix font-medium">Simulateur ROI</a>
             <a href="#offres" class="mobile-link block text-gray-300 hover:text-netflix font-medium">Offres Tarifaires</a>
@@ -278,7 +277,104 @@
         </div>
     </section>
 
-    <!-- 4. Galerie de Réalisations Vidéo -->
+    <!-- 4. NOUVELLE SECTION : Pourquoi la Vidéo B2B ? -->
+    <section id="pourquoi-video" class="py-24 bg-obsidian border-y border-obsidian-border relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold text-xs font-bold uppercase tracking-widest">Le levier n°1 de conversion</span>
+                <h2 class="title-cinzel text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">Pourquoi la vidéo transforme votre Chiffre d'Affaires</h2>
+                <p class="text-gray-400 text-base">En B2B High-Ticket, la décision d'achat repose sur la confiance absolue. Voici comment la vidéo accélère vos ventes.</p>
+            </div>
+
+            <!-- Grille des Chiffres Clés -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                
+                <div class="p-8 rounded-3xl bg-obsidian-card border border-obsidian-border hover-wow-card text-center relative">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-netflix/20 text-netflix flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                    </div>
+                    <div class="title-cinzel text-5xl font-extrabold text-netflix mb-2">+80%</div>
+                    <h3 class="text-white font-bold text-lg mb-2">Taux de conversion boosté</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Ajouter une vidéo VSL ou une étude de cas sur votre landing page augmente les conversions jusqu'à 80% par rapport à une page texte classique.
+                    </p>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-obsidian-card border border-netflix/40 hover-wow-card text-center relative glow-red">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-gold/20 text-gold flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-handshake-simple"></i>
+                    </div>
+                    <div class="title-cinzel text-5xl font-extrabold text-gold mb-2">88%</div>
+                    <h3 class="text-white font-bold text-lg mb-2">Décision d'achat accélérée</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        88% des décideurs B2B déclarent avoir été convaincus d'acheter une prestation de service ou un logiciel après avoir visionné sa vidéo dédiée.
+                    </p>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-obsidian-card border border-obsidian-border hover-wow-card text-center relative">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-netflix/20 text-netflix flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div class="title-cinzel text-5xl font-extrabold text-white mb-2">13x</div>
+                    <h3 class="text-white font-bold text-lg mb-2">Mémorisation & Impact</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Le cerveau humain traite le contenu vidéo 60 000 fois plus vite que le texte. Vos prospects retiennent 95% du message en vidéo contre 10% en lecture.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Grille des 3 Piliers Stratégiques -->
+            <div class="grid lg:grid-cols-3 gap-8 pt-8 border-t border-obsidian-border/60">
+                <div class="flex items-start space-x-4">
+                    <div class="w-10 h-10 rounded-xl bg-obsidian-card border border-obsidian-border flex items-center justify-center text-gold text-lg shrink-0 mt-1">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-base mb-1">1. Réduire votre cycle de vente</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Vos prospects arrivent en rendez-vous déjà éduqués, rassurés et pré-vendus. Vous gagnez des semaines de négociation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                    <div class="w-10 h-10 rounded-xl bg-obsidian-card border border-obsidian-border flex items-center justify-center text-netflix text-lg shrink-0 mt-1">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-base mb-1">2. Éliminer la méfiance</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Montrer vos vrais clients et la qualité cinématographique de votre travail instaure une preuve sociale instantanée et indiscutable.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                    <div class="w-10 h-10 rounded-xl bg-obsidian-card border border-obsidian-border flex items-center justify-center text-gold text-lg shrink-0 mt-1">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-base mb-1">3. Augmenter votre valeur perçue</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Une image soignée au rendu Hollywood/S-Cinetone permet d'imposer naturellement des tarifs High-Ticket et de dominer vos concurrents.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button type="button" class="btn-open-audit px-8 py-4 rounded-full bg-netflix hover:bg-netflix-hover text-white font-bold text-sm transition-all duration-300 glow-red hover:scale-105 inline-flex items-center space-x-3">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Optimiser votre stratégie vidéo dès aujourd'hui</span>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. Galerie de Réalisations Vidéo -->
     <section id="portfolio" class="py-24 bg-obsidian relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
@@ -365,7 +461,7 @@
         </div>
     </section>
 
-    <!-- 5. Simulateur ROI Interactif -->
+    <!-- 6. Simulateur ROI Interactif -->
     <section id="roi" class="py-24 bg-gradient-to-b from-obsidian via-obsidian-card/40 to-obsidian relative">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="p-8 sm:p-12 rounded-3xl glass-card border border-netflix/30 glow-red relative overflow-hidden hover-wow-card">
@@ -420,7 +516,7 @@
         </div>
     </section>
 
-    <!-- 6. Grille d'Offres Tarifaires -->
+    <!-- 7. Grille d'Offres Tarifaires -->
     <section id="offres" class="py-24 bg-obsidian">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -506,7 +602,7 @@
         </div>
     </section>
 
-    <!-- 7. Section Matériel Cinéma -->
+    <!-- 8. Section Matériel Cinéma -->
     <section id="gear" class="py-20 bg-obsidian-card/40 border-y border-obsidian-border relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12">
@@ -556,7 +652,7 @@
         </div>
     </footer>
 
-    <!-- 8. Modal de Réservation d'Audit -->
+    <!-- 9. Modal de Réservation d'Audit -->
     <div id="auditModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 px-4">
         <div class="bg-obsidian-card border border-netflix/40 w-full max-w-lg rounded-3xl p-6 sm:p-8 relative glow-red text-left">
             <button type="button" id="btnCloseAudit" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl">
@@ -646,7 +742,6 @@
                 }, 300);
             }
 
-            // Événements pour ouvrir la modale d'audit (tous les boutons cibles)
             document.querySelectorAll('.btn-open-audit, #btnNavAudit').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -669,7 +764,6 @@
                 });
             }
 
-            // Événements pour les vidéos du portfolio
             document.querySelectorAll('.portfolio-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const videoUrl = this.getAttribute('data-video');

@@ -184,36 +184,48 @@
     </header>
 
     <!-- 2. Section Hero -->
-    <section class="relative min-h-screen pt-28 pb-20 flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-netflix/10 via-obsidian to-obsidian pointer-events-none"></div>
-        <div class="absolute -top-40 -right-40 w-96 h-96 bg-netflix/25 rounded-full blur-[128px] pointer-events-none animate-float"></div>
+    <!-- 2. Section Hero avec Vidéo en Arrière-plan -->
+<section class="relative min-h-screen pt-28 pb-20 flex items-center justify-center overflow-hidden">
+    
+    <!-- Video Background -->
+    <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <video autoplay loop muted playsinline class="w-full h-full object-cover scale-105 opacity-40 filter contrast-125 brightness-90">
+            <source src="showreel-bg.mp4" type="video/mp4">
+        </video>
+        <!-- Overlay Sombre & Dégradé pour garantir la lisibilité du texte -->
+        <div class="absolute inset-0 bg-gradient-to-b from-obsidian/80 via-obsidian/90 to-obsidian z-10"></div>
+    </div>
 
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center fade-in-up">
-            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-obsidian-card border border-netflix/40 text-gold text-xs font-semibold uppercase tracking-widest mb-8 shadow-inner">
-                <span class="w-2 h-2 rounded-full bg-netflix animate-ping"></span>
-                <span>Production vidéo B2B & Storytelling high-ticket</span>
-            </div>
+    <!-- Glow Effect -->
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-netflix/20 rounded-full blur-[128px] pointer-events-none z-10 animate-float"></div>
 
-            <h1 class="title-cinzel text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-8">
-                Transformez vos prospects en clients grâce à <span class="shimmer-text">la vidéo</span>
-            </h1>
-
-            <p class="max-w-3xl mx-auto text-lg sm:text-xl text-gray-300 font-normal leading-relaxed mb-10">
-                Nous concevons des vidéos captivantes au rendu cinématographique et à forte valeur ajoutée, spécialement taillées pour doubler vos taux de conversion High-Ticket.
-            </p>
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16">
-                <button type="button" class="btn-open-audit w-full sm:w-auto px-8 py-4 rounded-full bg-netflix hover:bg-netflix-hover text-white font-bold text-base transition-all duration-300 glow-red hover:scale-105 flex items-center justify-center space-x-3 group">
-                    <span>Démarrer un projet vidéo</span>
-                    <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
-                </button>
-                <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-full bg-obsidian-card hover:bg-obsidian-hover border border-obsidian-border text-white font-semibold text-base transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-3">
-                    <i class="fa-solid fa-play text-netflix text-sm"></i>
-                    <span>Voir notre showreel</span>
-                </a>
-            </div>
+    <!-- Contenu Texte & Boutons -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-center fade-in-up">
+        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-obsidian-card/90 border border-netflix/40 text-gold text-xs font-semibold uppercase tracking-widest mb-8 shadow-inner backdrop-blur-md">
+            <span class="w-2 h-2 rounded-full bg-netflix animate-ping"></span>
+            <span>Production vidéo B2B & Storytelling high-ticket</span>
         </div>
-    </section>
+
+        <h1 class="title-cinzel text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-8">
+            Transformez vos prospects en clients grâce à <span class="shimmer-text">la vidéo</span>
+        </h1>
+
+        <p class="max-w-3xl mx-auto text-lg sm:text-xl text-gray-300 font-normal leading-relaxed mb-10">
+            Nous concevons des vidéos captivantes au rendu cinématographique et à forte valeur ajoutée, spécialement taillées pour doubler vos taux de conversion High-Ticket.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16">
+            <button type="button" class="btn-open-audit w-full sm:w-auto px-8 py-4 rounded-full bg-netflix hover:bg-netflix-hover text-white font-bold text-base transition-all duration-300 glow-red hover:scale-105 flex items-center justify-center space-x-3 group">
+                <span>Démarrer un projet vidéo</span>
+                <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+            </button>
+            <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-full bg-obsidian-card/80 hover:bg-obsidian-hover border border-obsidian-border text-white font-semibold text-base transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-3 backdrop-blur-md">
+                <i class="fa-solid fa-play text-netflix text-sm"></i>
+                <span>Voir notre showreel</span>
+            </a>
+        </div>
+    </div>
+</section>
 
     <!-- 3. Section "Le Réalisateur" -->
     <section id="about" class="py-24 bg-gradient-to-b from-obsidian via-obsidian-card/30 to-obsidian relative">

@@ -475,59 +475,82 @@
     </section>
 
     <!-- 6. Simulateur ROI Interactif -->
-    <section id="roi" class="py-24 bg-gradient-to-b from-obsidian via-obsidian-card/40 to-obsidian relative">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="p-8 sm:p-12 rounded-3xl glass-card border border-netflix/30 glow-red relative overflow-hidden hover-wow-card">
-                
-                <div class="text-center mb-10">
-                    <span class="text-gold text-xs font-bold uppercase tracking-widest">Calculateur de rentabilité</span>
-                    <h2 class="title-cinzel text-3xl sm:text-4xl font-bold text-white mt-1">Estimez le ROI de votre vidéo B2B</h2>
-                    <p class="text-gray-400 text-sm mt-2">Calculez l'impact financier d'une augmentation de votre taux de closing grâce à la vidéo.</p>
-                </div>
+<section id="roi" class="py-24 bg-gradient-to-b from-obsidian via-obsidian-card/40 to-obsidian relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="p-8 sm:p-12 rounded-3xl glass-card border border-netflix/30 glow-red relative overflow-hidden hover-wow-card">
+            
+            <div class="text-center mb-10">
+                <span class="text-gold text-xs font-bold uppercase tracking-widest">Calculateur de rentabilité</span>
+                <h2 class="title-cinzel text-3xl sm:text-4xl font-bold text-white mt-1">Estimez le ROI de votre vidéo B2B</h2>
+                <p class="text-gray-400 text-sm mt-2">Calculez l'impact financier d'une augmentation de votre taux de closing grâce à la vidéo.</p>
+            </div>
 
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between text-sm font-semibold mb-2">
-                                <label class="text-gray-300">Prospects qualifiés par mois</label>
-                                <span id="leadsValue" class="text-gold font-bold">30</span>
-                            </div>
-                            <input type="range" id="leadsInput" min="5" max="200" value="30" class="w-full h-2 bg-obsidian-border rounded-lg appearance-none cursor-pointer">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold mb-2">
+                            <label class="text-gray-300">Prospects qualifiés par mois</label>
+                            <span id="leadsValue" class="text-gold font-bold">30</span>
                         </div>
-
-                        <div>
-                            <div class="flex justify-between text-sm font-semibold mb-2">
-                                <label class="text-gray-300">Panier moyen client (€)</label>
-                                <span id="dealValue" class="text-gold font-bold">5 000 €</span>
-                            </div>
-                            <input type="range" id="dealInput" min="1000" max="50000" step="1000" value="5000" class="w-full h-2 bg-obsidian-border rounded-lg appearance-none cursor-pointer">
-                        </div>
-
-                        <div>
-                            <div class="flex justify-between text-sm font-semibold mb-2">
-                                <label class="text-gray-300">Hausse estimée du taux de conversion</label>
-                                <span id="convValue" class="text-netflix font-bold">+15%</span>
-                            </div>
-                            <input type="range" id="convInput" min="5" max="40" value="15" class="w-full h-2 bg-obsidian-border rounded-lg appearance-none cursor-pointer">
-                        </div>
+                        <input type="range" id="leadsInput" min="5" max="200" value="30" class="w-full h-2 bg-obsidian-border rounded-lg appearance-none cursor-pointer">
                     </div>
 
-                    <div class="p-6 rounded-2xl bg-obsidian border border-obsidian-border text-center space-y-4">
-                        <span class="text-xs text-gray-400 uppercase tracking-widest">Gain de chiffre d'affaires estimé</span>
-                        <div id="roiResult" class="title-cinzel text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-200 to-gold">
-                            + 22 500 € / mois
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold mb-2">
+                            <label class="text-gray-300">Panier moyen client (€)</label>
+                            <span id="dealValue" class="text-gold font-bold">5 000 €</span>
                         </div>
-                        <p class="text-xs text-gray-400 leading-relaxed">
-                            Calcul basé sur l'optimisation du pitch vidéo et de la réassurance client lors de vos phases de prospection.
-                        </p>
-                        <button type="button" class="btn-open-audit w-full py-3 rounded-xl bg-netflix hover:bg-netflix-hover text-white text-sm font-bold transition-all glow-red hover:scale-105">
-                            Obtenir un Audit ROI personnalisé
-                        </button>
+                        <input type="range" id="dealInput" min="1000" max="50000" step="1000" value="5000" class="w-full h-2 bg-obsidian-border rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold mb-2">
+                            <label class="text-gray-300">Hausse estimée du taux de conversion</label>
+                            <span id="convValue" class="text-netflix font-bold">+15%</span>
+                        </div>
+                        <input type="range" id="convInput" min="5" max="40" value="15" class="w-full h-2 bg-obsidian-border rounded-lg appearance-none cursor-pointer">
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-obsidian border border-obsidian-border text-center space-y-4">
+                    <span class="text-xs text-gray-400 uppercase tracking-widest">Gain de chiffre d'affaires estimé</span>
+                    <div id="roiResult" class="title-cinzel text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-200 to-gold">
+                        + 22 500 € / mois
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Calcul basé sur l'optimisation du pitch vidéo et de la réassurance client lors de vos phases de prospection.
+                    </p>
+                    <button type="button" class="btn-open-audit w-full py-3 rounded-xl bg-netflix hover:bg-netflix-hover text-white text-sm font-bold transition-all glow-red hover:scale-105">
+                        Obtenir un Audit ROI personnalisé
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bloc de réassurance / Données certifiées -->
+            <div class="mt-10 pt-6 border-t border-obsidian-border/60">
+                <div class="bg-obsidian/60 rounded-xl p-5 border border-obsidian-border">
+                    <div class="flex items-center gap-2 mb-3">
+                        <svg class="w-5 h-5 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 9 0 11-18 0 9 9 9 0 0118 0z"></path>
+                        </svg>
+                        <h4 class="text-xs font-bold text-white uppercase tracking-wider">Pourquoi cet impact sur vos conversions est réaliste ?</h4>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-4 text-xs text-gray-300">
+                        <div class="space-y-1">
+                            <p class="font-semibold text-gold">Sur votre site ou Landing Page :</p>
+                            <p class="text-gray-400">L'ajout d'une vidéo explicative ou VSL augmente les conversions de <strong class="text-white">+20% à +80%</strong> en moyenne <span class="text-gray-500">(Sources : Wyzowl, HubSpot)</span>.</p>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="font-semibold text-gold">En phase de closing / RDV :</p>
+                            <p class="text-gray-400">Envoyer une vidéo de cas client avant l'échange réduit les objections et fait grimper le taux de signature de <strong class="text-white">+10% à +25%</strong>.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- 7. Grille d'Offres Tarifaires -->
     <section id="offres" class="py-24 bg-obsidian">

@@ -449,41 +449,30 @@
                     </div>
                 </div>
 
-                <div class="portfolio-item vsl group rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border hover-wow-card cursor-pointer" data-video="https://www.youtube.com/watch?v=2_9jujYeWhA" data-title="VSL High-Ticket Cabinet Conseil">
+                <div class="portfolio-item cinema group rounded-2xl overflow-hidden bg-obsidian-card border border-obsidian-border hover-wow-card cursor-pointer" data-video="<iframe width="560" height="315" src="https://www.youtube.com/embed/2_9jujYeWhA?si=SQhUwEh0iwSArkh4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>" data-title="Manifeste de Marque Fintech">
                     <div class="relative aspect-video overflow-hidden">
-                        <img src="clips.jpg" alt="VSL High-Ticket" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="clips.jpg" alt="clips video" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="w-14 h-14 rounded-full bg-netflix/90 text-white flex items-center justify-center text-xl group-hover:scale-125 transition-transform glow-red">
                                 <i class="fa-solid fa-play ml-1"></i>
                             </div>
                         </div>
-                        <!-- <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/80 text-gold text-[10px] font-bold uppercase tracking-wider border border-gold/30">VSL Conversion</span> -->
+                        <!-- <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/80 text-gold text-[10px] font-bold uppercase tracking-wider border border-gold/30">Cinéma Marque</span> -->
                     </div>
                     <div class="p-6">
-                        <h3 class="title-cinzel text-lg font-bold text-white group-hover:text-netflix transition-colors">Votre Savoir-faire</h3>
-                        <!-- <p class="text-xs text-gray-400 mt-2">émotion</p> -->
+                        <h3 class="title-cinzel text-lg font-bold text-white group-hover:text-netflix transition-colors">Diverstissement</h3>
+                        <!-- <p class="text-xs text-gray-400 mt-2">Diverstissement</p> -->
                         <div class="mt-4 pt-4 border-t border-obsidian-border flex items-center justify-between text-xs text-gold">
-                            <span><i class="fa-solid fa-bolt mr-1"></i>Ventes</span>
-                            <span class="text-gray-500">6:45</span>
+                            <span><i class="fa-solid fa-trophy mr-1"></i>Prouver votre savoir-faire</span>
+                            <span class="text-gray-500">2:15</span>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
-
-        <!-- Fenêtre Modale Vidéo YouTube -->
-    <div id="videoModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden">
-        <div class="relative w-full max-w-4xl mx-4 aspect-video bg-obsidian rounded-2xl overflow-hidden border border-obsidian-border shadow-2xl">
-            <!-- Bouton de fermeture -->
-            <button type="button" id="closeVideoModal" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-obsidian/80 text-white flex items-center justify-center hover:bg-netflix transition-colors">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-            <!-- Conteneur pour l'iframe YouTube -->
-            <div id="videoContainer" class="w-full h-full"></div>
-        </div>
-    </div>
 
     <!-- Section Témoignage Vidéo Client -->
 <section id="temoignage-video" class="py-20 bg-obsidian relative overflow-hidden">
@@ -962,70 +951,5 @@
             }
         });
     </script>
-
-    document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('videoModal');
-    const videoContainer = document.getElementById('videoContainer');
-    const closeBtn = document.getElementById('closeVideoModal');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-    // Fonction pour extraire l'ID d'une URL YouTube et générer l'iframe
-    function openYouTubeModal(url) {
-        if (!url) return;
-        
-        // Extraction de l'ID YouTube (gère watch?v= et autres formats)
-        const videoIdMatch = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
-        const videoId = videoIdMatch ? videoIdMatch[1] : null;
-
-        if (videoId) {
-            // Création de l'iframe avec lecture automatique (autoplay=1)
-            videoContainer.innerHTML = `
-                <iframe 
-                    src="https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1" 
-                    class="w-full h-full" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `;
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Empêche le scroll en arrière-plan
-        }
-    }
-
-    // Fonction pour fermer la modale et stopper la vidéo
-    function closeYouTubeModal() {
-        videoContainer.innerHTML = ''; // Vide l'iframe pour stopper la lecture audio/vidéo
-        modal.classList.add('hidden');
-        document.body.style.overflow = 'auto'; // Restaure le scroll
-    }
-
-    // Écouteur de clic sur chaque carte portfolio
-    portfolioItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const videoUrl = item.getAttribute('data-video');
-            openYouTubeModal(videoUrl);
-        });
-    });
-
-    // Fermeture au clic sur le bouton X
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeYouTubeModal);
-    }
-
-    // Fermeture au clic en dehors de la boîte vidéo (sur le fond noir)
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeYouTubeModal();
-        }
-    });
-
-    // Fermeture avec la touche Échap (Escape)
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-            closeYouTubeModal();
-        }
-    });
-});
 </body>
 </html>
